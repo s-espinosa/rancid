@@ -7,26 +7,28 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<h1>{{title}}</h1>
+<h1 class="px-10 py-5">{{title}}</h1>
 
-<ul>
-  <li *ngFor="let movie of movies" (click)="setCurrentMovie(movie)">{{movie.title}}</li>
-</ul>
+<div class="flex flex-row">
+  <ul class="p-10">
+    <li *ngFor="let movie of movies" (click)="setCurrentMovie(movie)" class="cursor-pointer">{{movie.title}}</li>
+  </ul>
 
-<div
-  *ngIf="this.currentMovie"
-  class="details w-full bg-cover"
-  style="background-image: url('{{this.currentBackdrop}}');"
->
-  <img src="{{this.currentMovie.poster_path}}" alt="{{this.currentMovie.title}} Poster" class="max-w-md">
-  
-  <div>
-    <h1 class="text-2xl">{{ this.currentMovie.title }}</h1>
-    <p>{{ this.currentMovie.backdrop_path }}</p>
-    <p>{{ this.currentMovie.average_rating }}</p>
-    <p>{{ this.currentMovie.release_date }}</p>
+  <div *ngIf="this.currentMovie" class="details w-full bg-cover p-10 flex flex-row"
+    style="background-image: url('{{this.currentBackdrop}}');">
+
+    <div class="w-1/2 md:text-right">
+      <img src="{{this.currentMovie.poster_path}}" alt="{{this.currentMovie.title}} Poster" class="max-w-md" />
+    </div>
+
+    <div class="p-10 mx-10 w-1/2 backdrop-blur-md bg-white/30">
+      <h1 class="text-2xl">{{ this.currentMovie.title }}</h1>
+      <p>{{ this.currentMovie.average_rating }}</p>
+      <p>{{ this.currentMovie.release_date }}</p>
+    </div>
   </div>
 </div>
+
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
@@ -38,3 +40,4 @@
 
 
 <router-outlet></router-outlet>
+
